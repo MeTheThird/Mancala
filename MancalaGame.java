@@ -13,6 +13,7 @@ public class MancalaGame {
 		
 		while(true)
 		{
+			win();
 			if(Zen.isMouseClicked())
 			{
 				click(Zen.getMouseX(),Zen.getMouseY());
@@ -24,7 +25,7 @@ public class MancalaGame {
 	}
 	public static void setup() 
 	{
-		Zen.create(800, 200);
+		Zen.create(800, 300);
 		Zen.setFont("arial", 32);
 		for (int i = 0; i < 14; i++)
 		{
@@ -72,6 +73,8 @@ public class MancalaGame {
 				Zen.drawText(Integer.toString(mancala[x]), 40, 110);
 			}
 		}
+		Zen.setColor("black");
+		Zen.drawText("Player:" + player, 300, 250);
 		Zen.buffer(1);
 	}
 	public static void click(int x, int y)
@@ -193,6 +196,7 @@ public class MancalaGame {
 				mancala[13] += mancala[i];
 				mancala[i] = 0;
 			}
+			win();
 		}
 		else if (checkEmpty2())
 		{
@@ -201,6 +205,7 @@ public class MancalaGame {
 				mancala[6] += mancala[i];
 				mancala[i] = 0;
 			}
+			win();
 		}
 		
 	}
@@ -238,6 +243,12 @@ public class MancalaGame {
 		}
 		return false;
 		
+	}
+	public static void win() {
+		Zen.setColor("black");
+		Zen.fillRect(0, 0, 800, 300);
+		Zen.setColor("white");
+		Zen.drawText("Both players burned down the town with Blastiose. Thus, I WIN!", 300, 150);
 	}
 
 }
