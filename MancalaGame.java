@@ -13,7 +13,6 @@ public class MancalaGame {
 		
 		while(true)
 		{
-			win();
 			if(Zen.isMouseClicked())
 			{
 				click(Zen.getMouseX(),Zen.getMouseY());
